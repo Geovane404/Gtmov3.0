@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gtecnologia.Gtmov.dtos.MovieDTO;
 import com.gtecnologia.Gtmov.entities.Movie;
 import com.gtecnologia.Gtmov.repositories.MovieRepository;
+import com.gtecnologia.Gtmov.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class MovieService {
@@ -16,9 +18,11 @@ public class MovieService {
 	private MovieRepository movieRepository;
 
 	@Transactional(readOnly = true)
-	public Movie findById(Long id) {
+	public MovieDTO findById(Long id) {
 		
 		Optional<Movie> obj = movieRepository.findById(id);
-		return obj.get();
+		Movie entity = obj.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado"));
+		
+		return new MovieDTO(entity);
 	}
 }
