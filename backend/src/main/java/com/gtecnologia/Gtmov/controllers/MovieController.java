@@ -23,4 +23,6 @@ public class MovieController {
 		MovieDTO movieDto = movieService.findById(id);
 		return ResponseEntity.ok().body(movieDto);
 	}
+	
+	
 }

@@ -61,7 +61,7 @@ public class Movie implements Serializable {
 	public void setSubTitle(String subTitle) {
 		this.subTitle = subTitle;
 	}
-
+	
 	public Integer getYear() {
 		return year;
 	}
@@ -93,7 +93,7 @@ public class Movie implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
